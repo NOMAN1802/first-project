@@ -12,13 +12,6 @@ const createStudent : RequestHandler = async (req, res,next) => {
      
       const { password,   student: studentData } = req.body;
   
-    //  Data validation using joi 
-    //  const { error, value} =  studentValidationSchema.validate(studentData);
-  
-    //  Data validation using zod
-  
-    // const zodParseData =  studentValidationSchema.parse(studentData)
-  
       //will call service func to send this data
       const result = await UserServices.createStudentIntoDB(
         password, 
