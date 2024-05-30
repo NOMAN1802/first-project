@@ -1,22 +1,22 @@
-import { UserServices } from "./user.service";
+
 import sendResponse from "../../utils/sendResponse";
 import httpStatus from "http-status";
 import { RequestHandler } from "express";
 
 
 
-const createStudent : RequestHandler = async (req, res,next) => {
+const createAcademicSemester : RequestHandler = async (req, res,next) => {
     try {
   
       //creating a schema validation using zod
      
-      const { password,   student: studentData } = req.body;
+    //   const { password,   student: studentData } = req.body;
   
       //will call service func to send this data
-      const result = await UserServices.createStudentIntoDB(
-        password, 
-        studentData
-    );
+    //   const result = await UserServices.createStudentIntoDB(
+    //     password, 
+    //     studentData
+    // );
    
       sendResponse(res, {
         statusCode: httpStatus.OK,
@@ -29,6 +29,6 @@ const createStudent : RequestHandler = async (req, res,next) => {
   }
   };
 
-  export const UserControllers = {
-    createStudent,
+  export const AcademicSemesterControllers = {
+    createAcademicSemester,
   };
