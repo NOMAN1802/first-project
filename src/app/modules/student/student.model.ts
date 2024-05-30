@@ -110,7 +110,7 @@ const studentSchema = new Schema<TStudent, StudentModel>({
     },
     required: [true, 'Gender is required'],
   },
-  dateOfBirth: { type: String },
+  dateOfBirth: { type: Date },
   email: {
     type: String,
     required: [true, 'email is required'],
@@ -184,5 +184,6 @@ studentSchema.pre('aggregate', function( next){
 studentSchema.statics.isUserExists = async function(id: string){
   const existingUser = await Student.findOne({id});
   return existingUser;
-}
+};
+
 export const Student = model<TStudent,StudentModel >('Student', studentSchema)
