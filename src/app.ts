@@ -1,32 +1,34 @@
-
-import express, { Application, Request, Response } from 'express'
-import cors from 'cors'
-import { StudentRoute } from './app/modules/student/student.route'
-import { UserRoute } from './app/modules/user/user.route';
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import cors from 'cors';
+import express, { Application, Request, Response } from 'express';
 import globalErrorHandler from './app/middlewares/globalErrorhandler';
 import notFound from './app/middlewares/notFound';
 import router from './app/routes';
-const app: Application = express()
 
-// parsers
-app.use(express.json())
-app.use(cors())
+const app: Application = express();
 
-// application route
+// Middleware for parsing JSON and enabling CORS
+app.use(express.json());
+app.use(cors());
 
-app.use('/api/v1',router)
+// Application routes
+app.use('/api/v1', router);
 
+// Test route
 const test = (req: Request, res: Response) => {
-  const a = 10
-  res.send(a)
+  const a = 10;
+  res.json({ value: a }); // Send a JSON response instead of a raw number
 };
-
 
 app.get('/', test);
 
+// Not Found middleware (should be after all routes)
+app.use(notFound);
+
+// Global error handler (should be last middleware)
 app.use(globalErrorHandler);
 
-// not found
-
-app.use(notFound)
-export default app
+export default app;
