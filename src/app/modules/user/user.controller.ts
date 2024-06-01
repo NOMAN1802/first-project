@@ -4,7 +4,6 @@ import httpStatus from "http-status";
 import { RequestHandler } from "express";
 
 
-
 const createStudent : RequestHandler = async (req, res,next) => {
     try {
   
