@@ -120,7 +120,11 @@ const studentSchema = new Schema<TStudent, StudentModel>({
       message: '{VALUE} is not a valid email',
     },
   },
-  contractNo: { type: String, required: [true, 'Contact Number is required'] },
+  contractNo: { 
+    type: String,
+    required: [true, 'Contract number is required']
+
+   },
   emergencyContactNo: {
     type: String,
     required: [true, 'emergencyContactNo is required'],
@@ -158,7 +162,12 @@ const studentSchema = new Schema<TStudent, StudentModel>({
   isDeleted:{
     type: Boolean,
     default: false,
-  }
+  },
+  academicDepartment : {
+    type: Schema.Types.ObjectId,
+    ref: 'AcademicDepartment',
+    }
+
 },
 {
   toJSON: {
