@@ -18,7 +18,8 @@ app.use(cors());
 app.use('/api/v1', router);
 
 // Test route
-const test = (req: Request, res: Response) => {
+const test = async(req: Request, res: Response) => {
+  Promise.reject()
   const a = 10;
   res.json({ value: a }); // Send a JSON response instead of a raw number
 };
