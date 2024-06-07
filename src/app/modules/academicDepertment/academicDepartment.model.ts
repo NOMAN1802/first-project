@@ -24,6 +24,7 @@ const academicDepartmentSchema = new Schema<TAcademicDepartment>({
 );
 
 // Pre middleware for existing department
+
 academicDepartmentSchema.pre('save', async function(next) {
 
     const isDepartmentExist = await AcademicDepartment.findOne({
