@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import mongoose from 'mongoose';
 import config from '../../config';
 import { TStudent } from '../student/student.interface';
@@ -53,10 +54,11 @@ try{
      return newStudent;
 
 
-}catch(err){
+}catch(err : any){
  await session.abortTransaction();
  await session.endSession();
  throw new AppError(httpStatus.BAD_REQUEST,'Failed to create student')
+// throw  new Error(err)
 }
 
 
