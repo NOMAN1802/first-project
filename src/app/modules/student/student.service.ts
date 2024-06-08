@@ -8,7 +8,7 @@ import { TStudent } from './student.interface'
 
 
 const getAllStudentsFromDB = async (query: Record<string, unknown>) => {
-  const queryObj = {...query};
+  const queryObj = {...query};  //copy
   // {email: {$regex : query.searchTerm, $options: i}}
   // {presentAddress: {$regex : query.searchTerm, $options: i}}
   // {'name.firstName': {$regex : query.searchTerm, $options: i}}
@@ -25,8 +25,6 @@ const getAllStudentsFromDB = async (query: Record<string, unknown>) => {
 
 const excludeFields = ['searchTerm', 'sort', 'limit', 'page','fields'];
 excludeFields.forEach((el) => delete queryObj[el]);
-
-console.log( {query}, {queryObj});
 
 
   const searchQuery = Student.find({
