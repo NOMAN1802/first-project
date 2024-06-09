@@ -11,12 +11,12 @@ validateRequest(AcademicFacultyValidation.createAcademicFacultyValidationSchema)
 AcademicFacultyControllers.createAcademicFaculty);
 
 router.get(
-    '/:facultyId',
+    '/:id',
     AcademicFacultyControllers.getSingleAcademicFaculty,
   );
   
   router.patch(
-    '/:facultyId',
+    '/:id',
     validateRequest(
       AcademicFacultyValidation.updateAcademicFacultyValidationSchema
     ),
