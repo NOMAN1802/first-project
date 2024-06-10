@@ -20,41 +20,47 @@ const createSemesterRegistration = catchAsync(
 
 const getAllSemesterRegistrations = catchAsync(
     async (req: Request, res: Response) =>{
-    //     const result = 
+        const result = await SemesterRegistrationService.getAllSemesterRegistrationFromDB(req.query)
 
-    //     sendResponse(res, {
-    //         statusCode: httpStatus.OK,
-    //         success: true,
-    //         message: 'Semester Registration is retrieved successfully !',
-    //         data: result,
-    //       });
+        sendResponse(res, {
+            statusCode: httpStatus.OK,
+            success: true,
+            message: 'Semester Registration is retrieved successfully !',
+            data: result,
+          });
     },
 );
 
 const getSingleSemesterRegistration = catchAsync(
 
     async (req: Request, res: Response) =>{
-    //     const result = 
 
-    //     sendResponse(res, {
-    //         statusCode: httpStatus.OK,
-    //         success: true,
-    //         message: 'Semester Registration is retrieved successfully !',
-    //         data: result,
-    //       });
+        const {id} = req.params;
+        const result = await SemesterRegistrationService.getSingleSemesterRegistrationFromDB(
+            id,
+        )
+
+        sendResponse(res, {
+            statusCode: httpStatus.OK,
+            success: true,
+            message: 'Semester Registration is retrieved successfully !',
+            data: result,
+          });
     },
 );
 
 const  updateSemesterRegistration = catchAsync(
     async (req: Request, res: Response) =>{
-    //     const result = 
 
-    //     sendResponse(res, {
-    //         statusCode: httpStatus.OK,
-    //         success: true,
-    //         message: 'Semester Registration is updated successfully !',
-    //         data: result,
-    //       });
+        const {id}  = req.params;
+        const result = await SemesterRegistrationService.updateSemesterRegistrationIntoDB(id,req.body)
+
+        sendResponse(res, {
+            statusCode: httpStatus.OK,
+            success: true,
+            message: 'Semester Registration is updated successfully !',
+            data: result,
+          });
     },
 );
 
