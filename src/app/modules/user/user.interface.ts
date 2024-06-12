@@ -16,13 +16,12 @@ export interface TUser  {
 export interface UserModel extends Model<TUser>{
   isUserExistsByCustomId(id: string):  Promise<TUser>;
   isPasswordMatch(plainTextPassword: string, hashedPassword: string): Promise<boolean>;
+  isJWTIssuedBeforePasswordChanged(
+    passwordChangedTimestamp: Date,
+    jwtIssuedTimestamp: number,
+  ): boolean;
 }
 
 export type TUserRole = keyof typeof USER_ROLE;
 
-export type NewUser = {
-    password: string;
-    role: string;
-    id: string;
 
-}
